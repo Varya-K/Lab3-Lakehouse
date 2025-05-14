@@ -1,0 +1,28 @@
+services:
+  spark:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - SPARK_MODE=master
+      - SPARK_LOCAL_HOSTNAME=localhost
+    ports:
+      - "4040:4040"
+    depends_on:
+      - mlflow
+    networks:
+      - lakehouse
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    command: mlflow server --host 0.0.0.0
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+    networks:
+      - lakehouse
+
+networks:
+  lakehouse:
+    driver: bridge
