@@ -38,4 +38,4 @@ docker-compose up --build
 
 Также информацию по запускам можно увидеть по адресу `http://localhost:5000/`.  Например:
 
-![image.png](image.png)
+![image](https://github.com/user-attachments/assets/577183f1-fc94-44e6-aab2-10ab6340950e)
